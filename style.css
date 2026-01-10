@@ -1,0 +1,59 @@
+body {
+  background: #1e1e1e;
+  font-family: Arial, sans-serif;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+}
+
+.tamagotchi {
+  background: #2c2c2c;
+  padding: 20px;
+  border-radius: 18px;
+  width: 320px;
+  text-align: center;
+  box-shadow: 0 0 25px rgba(0,0,0,0.6);
+}
+
+.pet {
+  font-size: 64px;
+  margin: 15px 0;
+}
+
+.stats {
+  margin: 6px 0;
+  font-size: 15px;
+}
+
+.buttons button {
+  margin-top: 15px;
+  margin: 5px;
+  padding: 10px 14px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 14px;
+  background: #444;
+  color: white;
+  transition: 0.2s;
+}
+
+.buttons button:hover {
+  background: #666;
+}
+
+.footer {
+  margin-top: 20px;
+  padding-top: 12px;
+  border-top: 1px solid #555;
+}
+
+.made-by {
+  font-family: 'Pacifico', cursive;
+  font-size: 18px;
+  color: #f5c542;
+  margin-bottom: 8px;
+}
