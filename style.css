@@ -9,6 +9,11 @@ body {
   margin: 0;
 }
 
+.tcr {
+  color: rgb(65, 198, 65);
+  font-family: 'Pacifico', cursive;
+}
+
 .tamagotchi {
   background: #2c2c2c;
   padding: 20px;
@@ -56,4 +61,20 @@ body {
   font-size: 18px;
   color: #f5c542;
   margin-bottom: 8px;
+}
+
+@keyframes float {
+  0%   { transform: translateY(0); }
+  50%  { transform: translateY(-8px); }
+  100% { transform: translateY(0); }
+}
+
+.pet {
+  animation: float 2.5s ease-in-out infinite;
+  transition: transform 0.3s ease;
+  cursor: pointer;
+}
+
+.pet:hover {
+  transform: scale(1.15) translateY(-4px);
 }
