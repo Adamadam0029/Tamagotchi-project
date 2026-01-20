@@ -7,11 +7,15 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <audio id="bgMusic" loop>
+  <source src="The_Tamagotchi_Movie_Soundtrack_-_128KBPS.mp3" type="audio/mpeg">
+</audio>
 
-  <div class="tamagotchi">
+    <div class="tamagotchi">
     <h1>🐣 Mijn Tamagotchi</h1>
 
     <div class="pet">😊</div>
+    <div id="tamaSpeech" class="tama-speech"></div>
 
     <div class="stats">
       <p>❤️ Honger: <span id="hunger">50</span></p>
@@ -22,13 +26,15 @@
     <div class="buttons">
       <button onclick="feed()">🍎 Eten</button>
       <button onclick="play()">🎮 Spelen</button>
-      <button onclick="sleep()">💤 Slapen</button>
+      <button onclick="sleepPet()">💤 Slapen</button>
+
     </div>
 
     <div class="footer">
-      <p class="made-by">Made by Adam And Youssef</p>
-      <p>Techniek College Rotterdam</p>
+      <p class="made-by">Made by Adam</p>
+      <p class="tcr">Techniek College Rotterdam</p>
     </div>
   </div>
+  <script src="script.js"></script>
 </body>
 </html>
