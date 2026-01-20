@@ -8,31 +8,51 @@ const hungerEl = document.getElementById("hunger");
 const energyEl = document.getElementById("energy");
 const happinessEl = document.getElementById("happiness");
 const petEl = document.querySelector(".pet");
+const speech = document.getElementById("tamaSpeech");
 
-// Update stats + emoji
+// Update stats + emoji + speech
 function updateStats() {
   hungerEl.textContent = hunger;
   energyEl.textContent = energy;
   happinessEl.textContent = happiness;
 
-  // Emoji logica (prioriteit is belangrijk)
-  if (hunger > 90) {
-    petEl.textContent = "🤢"; // te vol / misselijk
+  // Emoji logica
+  if (hunger < 20) {
+    petEl.textContent = "😋"; 
   } 
   else if (energy < 20) {
-    petEl.textContent = "😴"; // moe
+    petEl.textContent = "😴";
   } 
   else if (happiness < 20) {
-    petEl.textContent = "😞"; // depressief
+    petEl.textContent = "😞";
   } 
   else {
-    petEl.textContent = "😊"; // normaal
+    petEl.textContent = "😊";
+  }
+
+  updateSpeech();
+}
+
+// 🗣️ Automatisch praten
+function updateSpeech() {
+  if (hunger < 30) {
+    speech.textContent = "Ik heb honger 🍎";
+  } 
+  else if (energy < 30) {
+    speech.textContent = "Ik ben moe 😴";
+  } 
+  else if (happiness < 30) {
+    speech.textContent = "Ik ben verdrietig 😢";
+  } 
+  else {
+    speech.textContent = "Ik voel me goed 😊";
   }
 }
 
 // 🍎 Eten
 function feed() {
   hunger = Math.min(hunger + 10, 100);
+  happiness = Math.min(happiness + 5, 100);
   updateStats();
 }
 
@@ -40,16 +60,24 @@ function feed() {
 function play() {
   happiness = Math.min(happiness + 15, 100);
   energy = Math.max(energy - 15, 0);
+  hunger = Math.max(hunger - 5, 0);
   updateStats();
 }
 
 // 💤 Slapen
-function sleep() {
+function sleepPet() {
   energy = Math.min(energy + 25, 100);
-  happiness = Math.max(happiness - 10, 0);
   hunger = Math.max(hunger - 10, 0);
   updateStats();
 }
 
-// Eerste keer updaten
+// Eerste update
 updateStats();
+
+const bgMusic = document.getElementById("bgMusic");
+
+document.addEventListener("click", () => {
+    bgMusic.volume = 0.3;
+    bgMusic.play();
+  }, { once: true });
+
