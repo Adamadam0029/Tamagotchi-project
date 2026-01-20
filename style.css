@@ -78,3 +78,14 @@ body {
 .pet:hover {
   transform: scale(1.15) translateY(-4px);
 }
+
+.tama-speech {
+  margin-top: 10px;
+  background: #222;
+  color: white;
+  padding: 8px 12px;
+  border-radius: 10px;
+  font-size: 14px;
+  min-height: 20px;
+  text-align: center;
+}
