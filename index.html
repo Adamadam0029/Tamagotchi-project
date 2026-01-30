@@ -1,40 +1,67 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="nl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tamagotchi</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tamagotchi</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <audio id="bgMusic" loop>
+
+<audio id="bgMusic" loop>
   <source src="The_Tamagotchi_Movie_Soundtrack_-_128KBPS.mp3" type="audio/mpeg">
 </audio>
 
-    <div class="tamagotchi">
-    <h1>🐣 Mijn Tamagotchi</h1>
+<div class="tamagotchi">
+  <img class="pet" src="ChatGPT Image 28 jan 2026, 11_48_25.png" alt="">
+  <div id="tamaSpeech" class="tama-speech">Alles gaat goed</div>
 
-    <div class="pet">😊</div>
-    <div id="tamaSpeech" class="tama-speech"></div>
+  <div class="stats">
 
-    <div class="stats">
-      <p>❤️ Honger: <span id="hunger">50</span></p>
-      <p>⚡ Energie: <span id="energy">50</span></p>
-      <p>😄 Geluk: <span id="happiness">50</span></p>
+    <div class="stat">
+      <span>🍎 Honger</span>
+      <div class="bar-container">
+        <div class="bar hunger">
+          <div id="hungerBar" class="fill"></div>
+        </div>
+        <span id="hungerPercent" class="percent">50%</span>
+      </div>
     </div>
 
-    <div class="buttons">
-      <button onclick="feed()">🍎 Eten</button>
-      <button onclick="play()">🎮 Spelen</button>
-      <button onclick="sleepPet()">💤 Slapen</button>
-
+    <div class="stat">
+      <span>⚡ Energie</span>
+      <div class="bar-container">
+        <div class="bar energy">
+          <div id="energyBar" class="fill"></div>
+        </div>
+        <span id="energyPercent" class="percent">50%</span>
+      </div>
     </div>
 
-    <div class="footer">
-      <p class="made-by">Made by Adam</p>
-      <p class="tcr">Techniek College Rotterdam</p>
+    <div class="stat">
+      <span>😄 Geluk</span>
+      <div class="bar-container">
+        <div class="bar happiness">
+          <div id="happinessBar" class="fill"></div>
+        </div>
+        <span id="happinessPercent" class="percent">50%</span>
+      </div>
     </div>
+
   </div>
-  <script src="script.js"></script>
+
+  <div class="buttons">
+    <button onclick="feed()">🍎 Eten</button>
+    <button onclick="play()">🎮 Spelen</button>
+    <button onclick="sleepPet()">💤 Slapen</button>
+  </div>
+
+  <div class="footer">
+    <p class="made-by">Made by Adam</p>
+    <p class="tcr">Techniek College Rotterdam</p>
+  </div>
+</div>
+
+<script src="script.js"></script>
 </body>
 </html>
