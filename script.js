@@ -1,83 +1,77 @@
-// Startwaarden
 let hunger = 50;
 let energy = 50;
 let happiness = 50;
 
-// HTML elementen
-const hungerEl = document.getElementById("hunger");
-const energyEl = document.getElementById("energy");
-const happinessEl = document.getElementById("happiness");
+const hungerBar = document.getElementById("hungerBar");
+const energyBar = document.getElementById("energyBar");
+const happinessBar = document.getElementById("happinessBar");
+
+const hungerPercent = document.getElementById("hungerPercent");
+const energyPercent = document.getElementById("energyPercent");
+const happinessPercent = document.getElementById("happinessPercent");
+
 const petEl = document.querySelector(".pet");
 const speech = document.getElementById("tamaSpeech");
+const bgMusic = document.getElementById("bgMusic");
 
-// Update stats + emoji + speech
 function updateStats() {
-  hungerEl.textContent = hunger;
-  energyEl.textContent = energy;
-  happinessEl.textContent = happiness;
+  hungerBar.style.width = hunger + "%";
+  energyBar.style.width = energy + "%";
+  happinessBar.style.width = happiness + "%";
 
-  // Emoji logica
-  if (hunger < 20) {
-    petEl.textContent = "😋"; 
-  } 
-  else if (energy < 20) {
-    petEl.textContent = "😴";
-  } 
-  else if (happiness < 20) {
-    petEl.textContent = "😞";
-  } 
-  else {
-    petEl.textContent = "😊";
-  }
+  hungerPercent.textContent = hunger + "%";
+  energyPercent.textContent = energy + "%";
+  happinessPercent.textContent = happiness + "%";
 
-  updateSpeech();
-}
-
-// 🗣️ Automatisch praten
-function updateSpeech() {
-  if (hunger < 30) {
+  if (hunger > 90) {
+    petEl.src = "nooo.png";
+    speech.textContent = "Ik voel me misselijk 🤢";
+  } else if (hunger < 25) {
+    petEl.src = "Adam.png";
     speech.textContent = "Ik heb honger 🍎";
-  } 
-  else if (energy < 30) {
+  } else if (energy < 25) {
+    petEl.src = "slapen.png";
     speech.textContent = "Ik ben moe 😴";
-  } 
-  else if (happiness < 30) {
+  } else if (happiness < 25) {
+    petEl.src = "dam.png";
     speech.textContent = "Ik ben verdrietig 😢";
-  } 
-  else {
-    speech.textContent = "Ik voel me goed 😊";
+  } else {
+    petEl.src = "Adamm.png";
+    speech.textContent = "Alles gaat goed 😊";
   }
 }
 
-// 🍎 Eten
 function feed() {
-  hunger = Math.min(hunger + 10, 100);
-  happiness = Math.min(happiness + 5, 100);
+  hunger = Math.min(hunger + 15, 100);
+  happiness = hunger > 90
+    ? Math.max(happiness - 10, 0)
+    : Math.min(happiness + 5, 100);
   updateStats();
 }
 
-// 🎮 Spelen
 function play() {
   happiness = Math.min(happiness + 15, 100);
   energy = Math.max(energy - 15, 0);
-  hunger = Math.max(hunger - 5, 0);
+  hunger = Math.max(hunger - 10, 0);
   updateStats();
 }
 
-// 💤 Slapen
 function sleepPet() {
   energy = Math.min(energy + 25, 100);
   hunger = Math.max(hunger - 10, 0);
   updateStats();
 }
 
-// Eerste update
-updateStats();
-
-const bgMusic = document.getElementById("bgMusic");
+setInterval(() => {
+  hunger = Math.max(hunger - 1, 0);
+  energy = Math.max(energy - 1, 0);
+  happiness = Math.max(happiness - 1, 0);
+  updateStats();
+}, 4000);
 
 document.addEventListener("click", () => {
-    bgMusic.volume = 0.3;
-    bgMusic.play();
-  }, { once: true });
+  bgMusic.volume = 0.3;
+  bgMusic.play();
+}, { once: true });
 
+updateStats();
